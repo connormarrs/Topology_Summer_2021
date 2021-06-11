@@ -1,0 +1,121 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Problem Set 1: Take from Dennis Aroux's Math 131 Topology Course at Harvard University
+% Written by Connor Marrs on June 11th, 2021
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[./main.tex]{subfiles}
+\graphicspath{{\subfix{../images/}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%					Document Section Body
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Adding your name here lets you make sure every page has your name, so that your psets don't get mixed up.
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%% PROBLEM 1.1 %%%%%%%%%%%%%%%%%%%%%%%%
+\begin{fprob}
+    Recall that a subset U of a metric space is open if, for all $x\in U$, there exists some
+    $\varepsilon >0$ such that $B_{\varepsilon}(x)$. Show that any open ball $B_r(p)$ is in fact an open set.
+\end{fprob}
+\begin{proof}
+    Let $(X,d)$ be a metric space and let $p\in X$. Now, consider $B_\varepsilon(p)$ for some $\varepsilon>0$.
+    Moreover, choose some $v\in B_\varepsilon(p)$, so by definition $d(p,v)<\varepsilon$. Now, let
+    \[
+        \gamma = \frac{1}{2}(\epsilon-d(p,v))
+    \]
+    and let $w\in B_\gamma(v)$; I claim that $B_\gamma(v)\subseteq B_\varepsilon(p)$. First, note that $\gamma>0$ since 
+    $d(p,v)<\varepsilon$ by the inclusion $v\in B_\varepsilon(p)$. By the triangle inequality, we know that 
+    $d(p,w)\leq d(p,v)+d(v,w)$, but $d(v,w)<\frac{1}{2}|\varepsilon-d(p,v)|$ by the inclusion $w\in B_\gamma(v)$. 
+    We conclude that $d(p,w)\leq \frac{1}{2}\varepsilon+\frac{1}{2}d(p,v)$. Moreover, $d(p,v)<\varepsilon$, so 
+    $d(p,w)<\frac{1}{2}\varepsilon+\frac{1}{2}\varepsilon=\varepsilon$. Now, it follows that $w\in B_\varepsilon(p)$, so the claim holds. 
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%% PROBLEM 1.2 %%%%%%%%%%%%%%%%%%%%%%%%
+\begin{fprob}
+    Show that the collection of open sets in a metric space X satisfies the axioms of a topology, namely:
+    \begin{enumerate}
+        \item $\emptyset$ and $X$ are open;
+        \item if $\{U_\alpha\}_{\alpha\in A}$ is an arbitrary collection of open sets, 
+        then $\bigcup_{\alpha\in A}U_\alpha$ is open;
+        \item if $U_1, \dots, U_n$ are open, then the intersection $\bigcap_{i=1}^nU_i$ is open.
+    \end{enumerate}
+    Finally, show with three examples that the arbitrary intersection of open sets is not necesarily open.
+\end{fprob}
+
+\begin{proof}
+    First, we show that $\emptyset, X$ are open. Since the proposition $p\in X$ is always false by definition, the
+    proposition "$x\in \emptyset$ $\Rightarrow$ there exists some $\varepsilon>0$ so that $B_\varepsilon(x)\subseteq\emptyset$" 
+    must always be true. It follows that $\emptyset$ is open. Moreover, for any $p\in X$, we know that for any 
+    $\varepsilon>0$, $B_\varepsilon(p)\subseteq X$ by definition.
+
+    Now, we show that open sets are closed under arbitrary unions. Let $\{U_\alpha\}_{\alpha\in A}$ be a collection of
+    open sets in $X$, and define $U = \bigcup_{\alpha\in A}U_\alpha$. Moreover, take $x\in U$, so for some 
+    $\alpha\in A$, $x\in U_\alpha$. $U_\alpha$ is not just an ordinary set, though; it is open. That means there 
+    is some $\varepsilon>0$ such that $B_\varepsilon(x)\subseteq U_\alpha$. We also know from set theory, though, 
+    that this inclusion implies that $B_\varepsilon(x)\subseteq U$, so we conclude that $U$ is open. This shows that $(ii)$ holds.
+
+    Finally, we show that open sets are closed under finite intersections. To whit, suppose that $S$ is a finite set, 
+    and let $\{U_i\}_{i\in S}$ be a finite collection of open sets indexed by $S$. Now, define $U=\bigcap_{i\in S}U_i$ and
+    let $x\in U$. Now, $x\in U_i$ for each $i\in S$, but each of these sets is open, so for every $i\in S$ there must be some 
+    $\varepsilon_i>0$ so that $B_{\varepsilon_i}(x)\subseteq U_i$. Now, let $\varepsilon = \min_{i\in S}\{\varepsilon_i\}$.
+    Now, take $v\in B_\varepsilon(x)$, so $d(x,v)<\varepsilon$. Moreover, $\varepsilon\leq \varepsilon_i$ for all $i\in S$,
+    so $d(x,v)<\varepsilon_i$ for all $i\in S$. In other words, $v\in B_{\varepsilon_i}(x)$ for all $i\in S$, so $v\in U_i$ 
+    for all $i\in S$. Now, $v\in \bigcap_{i\in S}=U$. Restating what we have shown, we see that $B_{\varepsilon}(x)\subseteq U$,
+    so $U$ is open. This completes the proof of $(iii)$, and by extension, our solution.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%% PROBLEM 1.3 %%%%%%%%%%%%%%%%%%%%%%%%
+\begin{fprob}
+    \begin{enumerate}[(a)]
+        \item Show that a sequence $\{p_i\}_{i\in\mn}$ in a metric space converges 
+        to a limit $p$ if and only if every open set containing $p$ also contains $p_i$ 
+        for all but finitely many $i$.
+        \item Show that a sequence $\{p_i\}_{i\in\mn}$ in a metric space has at most one limit.
+    \end{enumerate}
+\end{fprob}
+
+\begin{proof}
+    %TODO:
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%% PROBLEM 1.4 %%%%%%%%%%%%%%%%%%%%%%%%
+\begin{fprob}
+    Show that, if a sequence in a metric space converges to a limit, then it is a Cauchy
+    sequence. Show (by giving an example) that the converse is not true.
+\end{fprob}
+
+\begin{proof}
+    %TODO:
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%% PROBLEM 1.5 %%%%%%%%%%%%%%%%%%%%%%%%
+\begin{fprob}
+    Given any two points $p = (p_1,\dots,p_n)$ and $q = (q_1,\dots, q_n)$ in $\mr^n$, define
+    \[
+        d_\infty(p,q) = \max\{|p_i-q_i|, i\in\mn_n\}  
+    \]
+    \begin{enumerate}[(a)]
+        \item Show that $(\mr^n,d_\infty)$ is a metric space.
+        \item Show that a subset of $\mr^n$ is open in $(\mr^n,d_\infty)$ if and only if it is open 
+        for the Euclidean distance $(\mr^n,d)$. (In other terms: $d$ and $d_\infty$ induce the same 
+        topology on $\mr^n$).
+    \end{enumerate}
+\end{fprob}
+
+\begin{proof}
+    %TODO:
+\end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%% PROBLEM 1.6 %%%%%%%%%%%%%%%%%%%%%%%%
+\begin{fprob}
+    Let $X$ be any set. For $p,q\in X$ and define $d(p,q)=\begin{cases} 1 & p\neq q \\ 0 & p=q\end{cases}$.
+    Prove that this is a metric. Which subsets of the metric space $(X,d)$ are open, and which are closed?
+\end{fprob}
+
+\begin{proof}
+    %TODO:
+\end{proof}
+
+
+\end{document}

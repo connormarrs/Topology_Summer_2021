@@ -1,0 +1,124 @@
+% !TEX options = -outdir=../out/
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% 					Summer Topology Problems 2021
+%				 Written by Connor Marrs on June 11th, 2021
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 					Packages and Imports
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{article}
+\usepackage{graphicx}
+%\graphicspath{../images/} TODO: Check why this extension isn't working.
+
+%The AMS packages. They contain a lot of useful math-related goodies.
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mdframed}
+\usepackage[bottom]{footmisc}
+\usepackage{bbding}
+\usepackage{tcolorbox}
+\usepackage{mathabx}
+
+%This package changes the margins (makes them smaller than the default). 
+\usepackage[margin=1in]{geometry}
+
+%This package gives flexibility to use lettered lists in addition to numbered lists
+\usepackage[shortlabels]{enumitem}
+
+\usepackage{fancyhdr}
+\usepackage{subfiles}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%					Commands and Formatting
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%These commands will help us define sets
+\newcommand{\mn}{\mathbb{N}}
+\newcommand{\mz}{\mathbb{Z}}
+\newcommand{\mq}{\mathbb{Q}}
+\newcommand{\mr}{\mathbb{R}}
+\newcommand{\me}{\mathbb{E}}
+\newcommand{\heart}{\ensuremath\heartsuit}
+\newcommand{\<}{\langle}
+\renewcommand{\>}{\rangle}
+\newcommand\Tau{\mathcal{T}}
+
+%The amsthm package lets you format different types of mathematical ideas nicely. You use it by defining "\newtheorem"s as below:
+\newtheorem{problem}{Problem}[section]
+\definecolor{myviolet}{RGB}{170, 215, 255}
+\newmdenv[%
+    rightmargin=0,
+    backgroundcolor=myviolet,
+    linewidth=1pt,
+    fontcolor=black%
+]{fcolor}
+
+\newenvironment{fprob}
+  {\begin{fcolor}\begin{problem}}
+  {\end{problem}\end{fcolor}}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem*{proposition}{Proposition}
+\newtheorem*{summary}{Summary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{defn}[theorem]{Definition}
+\renewcommand*{\proofname}{Solution} %This command changes "Proof" to "Solution" in the proof environment. 
+%\renewcommand\qedsymbol{\Peace}
+\renewcommand{\abstractname}{Acknowledgements:}
+
+\pagestyle{fancy}
+\lhead{Connor Marrs\\\thedate}
+\rhead{\thepage\\Summer Topology}
+\setlength{\headheight}{25.2pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 						Title Page
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{fancy}
+\lhead{Connor Marrs}
+\rhead{\thepage}
+
+\title{Topology Review Summer 2021\\Problem Sets}
+\date{June 11th, 2021}
+\author{Written by Connor Marrs}
+
+%This changes removes indentation and instead adds space between paragraphs. I think it looks nicer this way. 
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1.25ex}
+
+%Everything above here is just commands which don't create any main-document text directly.
+%You have to put all your writing within \begin{document} and \end{document} clauses.
+\begin{document}
+\begin{titlepage}
+% \noindent\rule{\textwidth}{1pt}
+\maketitle
+\noindent\rule{\textwidth}{1pt}
+\begin{abstract}
+    These solutions are my own work, and I certify that I have consulted no unauthorized resources.
+\end{abstract} 
+\noindent\rule{\textwidth}{1pt}
+
+\begin{center}
+    \includegraphics[scale = 0.15]{../images/Bowdoin_Seal.png}
+\end{center}
+
+\end{titlepage}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 						Document Body
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\maketitle
+
+\section{Week 1: Metric Spaces}
+\subfile{Problem_Set_1}
+
+\section{Week 2: Topological Spaces}
+\subfile{Problem_Set_2}
+
+\end{document}
