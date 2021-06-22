@@ -27,7 +27,8 @@
     $d(p,v)<\varepsilon$ by the inclusion $v\in B_\varepsilon(p)$. By the triangle inequality, we know that 
     $d(p,w)\leq d(p,v)+d(v,w)$, but $d(v,w)<\frac{1}{2}|\varepsilon-d(p,v)|$ by the inclusion $w\in B_\gamma(v)$. 
     We conclude that $d(p,w)\leq \frac{1}{2}\varepsilon+\frac{1}{2}d(p,v)$. Moreover, $d(p,v)<\varepsilon$, so 
-    $d(p,w)<\frac{1}{2}\varepsilon+\frac{1}{2}\varepsilon=\varepsilon$. Now, it follows that $w\in B_\varepsilon(p)$, so the claim holds. 
+    $d(p,w)<\frac{1}{2}\varepsilon+\frac{1}{2}\varepsilon=\varepsilon$. Now, it follows that $w\in B_\varepsilon(p)$, 
+    so the claim holds. 
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%% PROBLEM 1.2 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -57,8 +58,8 @@
     Finally, we show that open sets are closed under finite intersections. To whit, suppose that $S$ is a finite set, 
     and let $\{U_i\}_{i\in S}$ be a finite collection of open sets indexed by $S$. Now, define $U=\bigcap_{i\in S}U_i$ and
     let $x\in U$. Now, $x\in U_i$ for each $i\in S$, but each of these sets is open, so for every $i\in S$ there must be some 
-    $\varepsilon_i>0$ so that $B_{\varepsilon_i}(x)\subseteq U_i$. Now, let $\varepsilon = \min_{i\in S}\{\varepsilon_i\}$.
-    Now, take $v\in B_\varepsilon(x)$, so $d(x,v)<\varepsilon$. Moreover, $\varepsilon\leq \varepsilon_i$ for all $i\in S$,
+    $\varepsilon_i>0$ so that $B_{\varepsilon_i}(x)\subseteq U_i$. Now, let $\varepsilon = \min_{i\in S}\{\varepsilon_i\}$, and 
+    take $v\in B_\varepsilon(x)$; then $d(x,v)<\varepsilon$. Moreover, $\varepsilon\leq \varepsilon_i$ for all $i\in S$,
     so $d(x,v)<\varepsilon_i$ for all $i\in S$. In other words, $v\in B_{\varepsilon_i}(x)$ for all $i\in S$, so $v\in U_i$ 
     for all $i\in S$. Now, $v\in \bigcap_{i\in S}=U$. Restating what we have shown, we see that $B_{\varepsilon}(x)\subseteq U$,
     so $U$ is open. This completes the proof of $(iii)$, and by extension, our solution.
@@ -75,7 +76,33 @@
 \end{fprob}
 
 \begin{proof}
-    %TODO:
+    (a, $\Rightarrow$) First, suppose that $\{p_i\}_{i\in\mn}$ is a sequence in a metric space $(X,d)$ where $p_i\rightarrow p$, 
+    and let $U$ be an open set containing $p$. Since $U$ is open, there is $\varepsilon>0$ such that $B_\varepsilon(p)\subseteq U$, 
+    and since $p_i\rightarrow p$, there must be an $N\in \mn$ such that if $n>N$, then $d(p_n,p)<\varepsilon$. In other words, if
+    $n>N$, then $p_n\in B_\varepsilon(p)$, but this means that $p_n\in U$ as $B_\varepsilon(p)\subseteq U$. Taking the contrapositive 
+    of this statement, we see that if $p_i\not\in U$, then $i<N$, and so only finitely many such $i$ can exist.
+
+    ($\Leftarrow$) Now, let $(X,d)$ be a metric space with $p\in X$ and $\{p_i\}_{i\in\mn}$ a sequence therein. Moreover, suppose that
+    for any open set $U$ containing $p$, there are only finitely many $i$ such that $p_i\not\in U$. Let $\varepsilon>0$, and consider 
+    $B_\varepsilon(p)$, which by our reasoning above is open. Then, there are only finitely many $i\in \mn$ such that 
+    $p_i\not\in B_\varepsilon(p)$, so let $S=\{i\in\mn | p_i\not\in B_\varepsilon(p)\}$. As $S$ is finite, it must have a maximum 
+    element, say $N$. If $n>N$, then $n\not\in S$, since such an inclusion would contradict the assumption that $N$ was the maximum of 
+    $S$. Note however, that this is the $N$ required by the definition of convergence, so $p_i\rightarrow p$.
+
+    (b) Let that $(X,d)$ is a metric space and $\{p_i\}_{i\in\mn}$ a sequence therein. Suppose that for $p\neq q$, $p_i\rightarrow p$
+    and $p_i\rightarrow q$. Since $p\neq q$, we know that $d(p,q)>0$, so if we take $r=\frac{d(p,q)}{3}$, then we can consider $U=B_d(p)$
+    and $V=B_d(q)$. I claim that $U\cap V=\emptyset$. Note that
+    \begin{align*}
+	d(p,v)+d(v,q) &> d(p,q) \text{ by the triangle inequality}\\
+	d(q,v) &> d(p,q) - d(p,v) \text{ rearranging terms}\\
+	&> d(p,q) - d \text{ since $v\in B_d(p)$}\\
+	&> 2d > d \text{ since $d=\frac{d(p,q)}{3}$}
+    \end{align*}
+    so we see that $d(q,v) > d$, so $q\not\in B_d(p)$, which proves our claim. By the result of (a) and the fact that $p_i\rightarrow p$,
+    the set $S = \{i\in \mn | p_i\not\in B_d(p)\}$ is finite. Similarly, we can reason that the set $R =\{i\in\mn| p_i\in B_d(q)\}$ is 
+    infinite. Moreover, $B_d(q)\subseteq X\setminus B_d(p)$ by our reasoning abover, so $R\subseteq S$. Since any subset of a finite set
+    must be finite, we have a contradiction. Thus, the assumption that distinct $p$ and $q$ can exist must be false, so we conclude
+    that limits are unique in metric spaces.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%% PROBLEM 1.4 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -85,7 +112,19 @@
 \end{fprob}
 
 \begin{proof}
-    %TODO:
+	Let $(X,d)$ be a metric space and $\{p_i\}_{i\in\mn}$ be a sequence therein such that $p_i\rightarrow p$. Fix some $\varepsilon>0$,
+    	and since $p_i\rightarrow p$, we know that there is some $N\in\mn$ such that if $n>N$, then $p_i\in B_{\frac{\varepsilon}{2}}(p)$.
+	Moreover, for any $x,y\in B_{\frac{\varepsilon}{2}}(p)$,
+	\begin{align*}
+		d(x,y) &< d(x,p)+d(y,p) \text{ by the triangle inequality}\\
+		&< \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon
+	\end{align*}
+	Now, we see that if $m,n>N$, $d(p_n,p_m)<\varepsilon$, so $\{p_i\}_{i\in\mn}$ is indeed Cauchy.
+
+	To see that the converse is true, consider $\{\sum_{i=1}^n \frac{4(-1)^i}{2i+1}\}_{n\in\mn}$. We can see that this is a sequence in 
+	$(\mq,d)$, and it is a result from analysis that this sequence converges to $\pi$. Thus, in $(\mr, d)$, it converges, so it is 
+	cauchy by the above reasoning. By keeping the same metric, we see that this sequence must also be cauchy in $(\mq, d)$. Since limits
+    are unique in metric spaces, this sequence cannot converge to any other value in $\mr$, meaning it cannot converge to a value in $\mq$.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%% PROBLEM 1.5 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -103,7 +142,66 @@
 \end{fprob}
 
 \begin{proof}
-    %TODO:
+    (a) First, we show that $d_\infty$ is symmetric. Let $x,y\in \mr^n$, and let $x_i$ or $y_i$ denote the ith coordinate 
+    of $x$ or $y$ respectively. Since $|x_i-y_i|=|y_i-x_i|$, we can see that 
+    \begin{align*}
+    	d_\infty(x,y) &= \max_{i\in\mn_n}|x_i-y_i| \\
+	    &= \max_{i\in\mn_n}|y_i-x_i| = d_\infty(y,x)
+	\end{align*}
+	Now, we show that $d_\infty$ obeys the triangle inequality. Let $x,y,z\in \mr^n$, and let $i=\arg\max_{i\in\mn_n}\{|x_i-y_i\}$.
+    It follows that
+    \begin{align*}
+        d_\infty(x,z) + d_\infty(y,z) &= \max_{j\in\mn_n}\{|x_j-z_j\} + \max_{j\in\mn\{|y_j-z_j\}}\\
+        &\geq |x_i-z_i| + |y_i-z_i| \text{ by the definition of a maximum}\\
+        &\geq |x_i-y_i| \text{ by the triangle inequality for absolute value}\\
+        &= d_\infty(x,y)
+    \end{align*}
+    so the triangle inequality does hold. Finally, we will show that $d_\infty(x,y)=0$ if and only if $x=y$. First, suppose that
+    $d_\infty(x,y)=0$ for $x,y\in \mr^n$. Note that each $|x_i-y_i|\geq 0$ by definition, but 
+    \[
+        0 = d_\infty(x,y)=\max_{j\in\mn_n}\{|x_j-y_j|\} \geq |x_i-y_i|
+    \]
+    for any $i\in\mn_n$, so $|x_i-y_i|=0$ for any $i$. This implies, though, that $x=y$. Moreover, if $x=y$, then $x_i=y_i$ for
+    any $i\in\mn_n$, so $|x_i-y_i| =0$, meaning $d_\infty(x,y)=0$. We conclude that $d_\infty$ is a metric on $\mr^n$.
+
+    (b) First, I claim that for all $x,y\in \mr^n$, 
+    \[
+        d_\infty(x,y) \leq d(x,y) \leq \sqrt{n} d_\infty(x,y)
+    \]
+    Provided that the above claim holds, consider some open subset $U\subset\mr^n$ that is open in the Euclidean topology. 
+    Let $B'$ denotes an open ball in the $d_\infty$ topology and $B_\varepsilon(x)$ denote an open Euclidean ball. Now,
+    for any $p\in B'_{\frac{\varepsilon}{\sqrt{n}}}(x)$, we see that
+    \begin{align*}
+        d(x,p) \leq \sqrt{n}d(x,y) < \sqrt{n}\frac{\varepsilon}{\sqrt{n}} = \varepsilon
+    \end{align*}
+    so $B'_{\frac{\varepsilon}{\sqrt{n}}}(x)\subseteq B_\varepsilon(x)\subseteq U$, so $U$ is also open in the $d_\infty$.
+    Conversely, consider some $U\subseteq\mr^n$ that is open in the $d_\infty$ topology. Now, for any $x\in U$, there is 
+    $\varepsilon>0$ such that $B'_{\varepsilon}(x)\subseteq U$. Moreover, for any $p\in B'_{\varepsilon}(x)$, we have that
+    \begin{align*}
+        d(x,p) &\leq d_\infty(x,p) <\varepsilon
+    \end{align*}
+    so $p\in B_{\varepsilon}(x)$. Now, we have that $B_\varepsilon(x)\subseteq B'_{\varepsilon}(x)\subseteq U$, so $U$ is open
+    in the Euclidean topology as well. To finish the proof, we now justify our claim.
+    \medskip
+
+    We start with the first equality; let $x,y\in\mr^n$, and let $j=\arg\max_{i\in\mn_n}\{|x_i-y_i\}$. We know that
+    \begin{align*}
+        d_\infty(x,y) = |x_j-y_j| &= \sqrt{(x_j-y_j)^2}\\
+        &\leq \sqrt{\sum_{i=1}^n(x_i-y_i)^2} = d(x,y)
+    \end{align*}
+    where the last inequality holds since the sum is clearly larger than one of its terms, and square roots preserve order (this
+    can be seen by considering the contrapositive of "$x>y$ $\Rightarrow$ $x^2>y^2$"). Now, we consider the second inequality. By the
+    definition of $j$, we know that for any $i\in\mn$, $|x_i-y_i|\leq |x_j-y_j|$. By induction, we can see that 
+    \[
+        \sum_{i=1}^n(x_i-y_i)^2 \leq \sum_{i=1}^n(x_j-y_j)^2
+    \]
+    Combining this fact with the result that square roots preserve relative order, we conclude that
+    \begin{align*}
+        d(x,y)=\sqrt{\sum_{i=1}^n(x_i-y_i)^2} &\leq \sqrt{n(x_j-y_j)^2}\\
+        & = \sqrt{n}|x_j-y_j| = \sqrt{n}d_\infty(x,y)
+    \end{align*}
+    Thus, our claim holds, and we see that indeed a subset of $\mr^n$ is open in the Euclidean topology if and only if it is open
+    in the infinity metric.
 \end{proof}
 
 
@@ -114,7 +212,40 @@
 \end{fprob}
 
 \begin{proof}
-    %TODO:
+    First, we show that the discrete metric is symmetric. Suppose that $x,y\in\mr^n$, and note that either $x=y$ or $x\neq y$.
+    If, on the one hand $x=y$, then $d(x,y)=0$, but we also know that $y=x$, so $d(y,x)=0$. Thus, $d(x,y)=d(y,x)$. If on the
+    other hand, $x\neq y$, then $d(x,y)=1$, and as before $y\neq x$, so $d(y,x)=1$, meaning $d(x,y)=d(y,x)$. In either case,
+    however, the discrete metric is symmetric.
+    \medskip
+
+    Now, we show that the metric is definite. If $x,y\in\mr^n$ where $d(x,y)=0$, we can see that $x=y$ by considering the
+    contrapositive of the statement $x\neq y$ $\Rightarrow$ $d(x,y)=1$.
+    \medskip
+
+    Finally, we show that the triangle inequality holds. Again, take $x,y,z\in\mr^n$. First, suppose that $x=y=z$, in which
+    case $d(x,y)=d(y,z)=d(x,z)=0$, so 
+    \begin{align*}
+        d(x,y) + d(y,z) = 0+0 = 0 &= d(x,z)\\ 
+        d(y,x) + d(x,z) = 0+0 = 0 &= d(y,z)\\
+        d(x,z) + d(z,y) = 0+0 = 0 &= d(x,y)\\
+    \end{align*}
+    meaning that the triangle inequality holds. On the other
+    hand, suppose that precisely two of the points coincide, and suppose without loss of generality that $x=y\neq z$. Then,
+    \begin{align*}
+        d(x,y) + d(y,z) = 0+1 \geq 0 &= d(x,z)\\ 
+        d(y,x) + d(x,z) = 0+1 \geq 0 &= d(y,z)\\
+        d(x,z) + d(z,y) = 1+1 \geq 0 &= d(x,y)\\
+    \end{align*}
+    so the triangle inequality holds. Finally, suppose that all three points are distinct. In this case, for any relabeling of $x,y,z$,
+    we can see that
+    \[
+        d(x,y)+d(y,z)= 1+1\geq 1 = d(x,z)
+    \]
+    so again the triangle inequality holds. We conclude that the discrete metric is indeed worthy of its name. Moreover, we can easily
+    see that for any $x\in X$, $\{x\}$ is open by considering $B_{\frac{1}{2}}(x)=\{x\}$. Now, any singleton is open, but arbitrary unions
+    of open sets are open (by the result of the first problem), and since any set is the union of its singletons, any subset of $X$ is open.
+    Moreover, the complement of any open set in $X$ is also a set in $X$, so it must be open. This tells us that any subset $U\subseteq X$ is
+    both open and closed in the discrete metric. 
 \end{proof}
 
 
